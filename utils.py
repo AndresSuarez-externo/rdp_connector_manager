@@ -39,16 +39,16 @@ def save_client_to_db(password,name, contact, info, vpn_name, vpn_login, vpn_pas
 
         cursor = conn.cursor()
 
-        zapytanie = f" exec dodaj_klienta '{name}', '{contact}', '{info}', '{vpn_name}', '{vpn_login}', '{vpn_pass}', '{rdp_name}', '{rdp_login}', '{rdp_pass}', '{simple_login}', '{simple_pass}', '{rdp_path}' "
+        query = f" exec add client '{name}', '{contact}', '{info}', '{vpn_name}', '{vpn_login}', '{vpn_pass}', '{rdp_name}', '{rdp_login}', '{rdp_pass}', '{simple_login}', '{simple_pass}', '{rdp_path}' "
         try:
-            cursor.execute(zapytanie)
+            cursor.execute(query)
             message = ''
             status = True
         except pyodbc.Error as err:
             if err.args[0] == '23000':
-                message = "Wybrana nazwa juz istnieje w bazie danych!"
+                message = "The selected name already exists in the database!"
             else:
-                message = "Nieznany błąd!"
+                message = "Unknown error!"
                 status = False
     return status, message
 
@@ -57,14 +57,14 @@ def delete_client_from_db(password,name,callback):
     config = Config()
     with pyodbc.connect('DRIVER={ODBC Driver 11 for SQL Server};SERVER='+config.server+';DATABASE='+config.database+';UID='+config.username+';PWD='+ password) as conn:
         cursor = conn.cursor()
-        zapytanie = f"delete from klient where nazwa = '{name}' "
+        query = f"delete from bbva_bbdd where nombre = '{name}' "
         try:
-            cursor.execute(zapytanie)
+            cursor.execute(query)
             message = ''
             status = True
 
         except pyodbc.Error as err:
-            message = "Nieznany błąd!"
+            message = "Uknown error!"
             status = False
 
     callback()
