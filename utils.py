@@ -8,7 +8,7 @@ class Config():
     baza = config['BAZA']
     rdp = config['RDP']
     server = '34.255.0.53'
-    database = 'bbva'
+    database = 'bbva_bbdd'
     username ='ES569812' #8yW*!s38)wVCdfG1Bu#(
     rdp_path = ''
 
