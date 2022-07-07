@@ -1,0 +1,29 @@
+USE [conexion]
+GO
+
+/****** Object:  Table [dbo].[cliente]    Script Date: 2021-08-04 10:46:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[cliente](
+	[nombre] [varchar](256) NOT NULL,
+	[info] [text] NULL,
+	[contacto] [text] NULL,
+	[vpn_info] [text] NULL,
+	[vpn_login] [text] NULL,
+	[vpn_pass] [text] NULL,
+	[rdp_info] [text] NULL,
+	[rdp_login] [text] NULL,
+	[rdp_pass] [text] NULL,
+	[simple_login] [text] NULL,
+	[simple_pass] [text] NULL,
+	[rdp_path] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[nombre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
